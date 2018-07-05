@@ -37,8 +37,6 @@ source:
 configuration:
   # The initialization script is intended to install
   # app prerequisite and initialize the OS
-  initialization:
-    script: 
   # The command is the actual command used to start
   # the application process
   start:
