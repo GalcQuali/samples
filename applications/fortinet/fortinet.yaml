@@ -34,16 +34,4 @@ source:
       - id: ami-42809222
         region: us-west-1
 
-configuration:
-  # The initialization script is intended to install
-  # app prerequisite and initialize the OS
-  # The command is the actual command used to start
-  # the application process
-  start:
-    command: 
-  # We validate the app is listening on
-  # the ports defined in the connectivity section
-  # to validate it is up
-  healthcheck:
-    wait_for_ports: ALL
-    timeout: 180
+
