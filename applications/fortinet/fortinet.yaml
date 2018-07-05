@@ -1,1 +1,51 @@
+#
+#   This application file defines how to deploy and configure
+#   a sample website.
+#   Developed with Java Spring, deployed on a TomCat web server
+#
+---
+spec_version: 1
+kind: application
 
+
+# This section defines the infrastructure requirements
+# for the application
+infrastructure:
+  # Specify the compute requirement for this app
+  # if we don't specify anything the default will be used
+  compute:
+    spec:
+      aws:
+        instance_type: t2.small
+
+  connectivity:
+    external:
+      - port_info:
+          # Port 80 will be opened externally to receive web requests
+          port: 80
+
+source:
+  os_type: linux
+  # Images for AWS are provided per region
+  image:
+    # This is a clean Ubuntu server image that will be used
+    # to create a new EC2 instance in the defined AWS region
+    ami:
+      - id: ami-42809222
+        region: us-west-1
+
+configuration:
+  # The initialization script is intended to install
+  # app prerequisite and initialize the OS
+  initialization:
+    script: 
+  # The command is the actual command used to start
+  # the application process
+  start:
+    command: 
+  # We validate the app is listening on
+  # the ports defined in the connectivity section
+  # to validate it is up
+  healthcheck:
+    wait_for_ports: ALL
+    timeout: 180
